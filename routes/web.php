@@ -38,9 +38,9 @@
             // 退出
             Route::get('/logout','LoginController@logout')->name('admin_logout');
             // 文章管理
+            Route::get('/artlist','ArticleController@list')->name('admin_artlist');
             Route::get('/artcreate','ArticleController@create')->name('admin_artcreate');
             Route::post('/artadd','ArticleController@add')->name('admin_artadd');
-            Route::get('/artlist','ArticleController@list')->name('admin_artlist');
             Route::get('/artedit/{id}','ArticleController@edit')->name('admin_artedit');
             Route::get('/artupdate','ArticleController@update')->name('admin_artupdate');
             Route::get('/artdelete','ArticleController@delete')->name('admin_artdelete');
@@ -53,11 +53,16 @@
             Route::get('/artsort_delete','Article_cateController@delete')->name('admin_artsort_delete');
 
             // 管理员管理
-            // Route::get('/admin_list','AdminController@list')->name('admin_adminlist');
-            // Route::get('/admin_aaa','AdminController@aaa')->name('admin_adminaaa');
-            // Route::get('/admin_bbb','AdminController@bbb')->name('admin_adminbbb');            
+            Route::get('/admin_role','AdminController@list')->name('admin_adminlist');
+            Route::post('/admin_add','AdminController@add')->name('admin_adminadd');
+            Route::get('/admin_edit','AdminController@edit')->name('admin_adminedit');
+            Route::get('/admin_update','AdminController@update')->name('admin_adminupdate');
+            // Route::get('/admin_privilege','AdminController@')->name('admin_privilege');
+            // Route::get('/admin_info','AdminController@bbb')->name('admin_admininfo');            
 
+            // 会员管理
 
+            // 商品管理
         });    
     });
     

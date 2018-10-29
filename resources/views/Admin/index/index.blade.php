@@ -365,20 +365,30 @@ function link_operating(name,title){
                             <li class="home"><a href="javascript:void(0)" name="{{route('admin_artsort')}}" title="分类管理" class="iframeurl"><i class="icon-double-angle-right"></i>分类管理</a></li>
 						</ul>
 					</li>
-					<li><a href="#" class="dropdown-toggle"><i class="icon-group"></i><span class="menu-text"> 管理员管理 </span><b class="arrow icon-angle-down"></b></a>
-						<ul class="submenu">
-							<li class="home"><a href="javascript:void(0)" name="admin_Competence.html" title="权限管理"  class="iframeurl"><i class="icon-double-angle-right"></i>权限管理</a></li>
-                            <li class="home"><a href="javascript:void(0)" name="administrator.html" title="管理员列表" class="iframeurl"><i class="icon-double-angle-right"></i>管理员列表</a></li>
-							<li class="home"><a href="javascript:void(0)" name="admin_info.html" title="个人信息" class="iframeurl"><i class="icon-double-angle-right"></i>个人信息</a></li>
-						</ul>
-					</li>
-                     <li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 产品管理 </span><b class="arrow icon-angle-down"></b></a>
+					<li>
+					<a href="#" class="dropdown-toggle"><i class="icon-user"></i><span class="menu-text"> 会员管理 </span><b class="arrow icon-angle-down"></b></a>
+                    <ul class="submenu">
+                    <li class="home"><a href="javascript:void(0)" name="user_list.html" title="会员列表"  class="iframeurl"><i class="icon-double-angle-right"></i>会员列表</a></li>
+                    <li class="home"><a href="javascript:void(0)" name="member-Grading.html" title="等级管理"  class="iframeurl"><i class="icon-double-angle-right"></i>等级管理</a></li>
+                    <li class="home"><a href="javascript:void(0)" name="integration.html" title="会员记录管理"  class="iframeurl"><i class="icon-double-angle-right"></i>会员记录管理</a></li>
+ 
+                   </ul>
+				</li>
+				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 商品管理 </span><b class="arrow icon-angle-down"></b></a>
 					    <ul class="submenu">
                         	<li class="home"><a  href="javascript:void(0)" name="Products_List.html"  title="产品类表" class="iframeurl"><i class="icon-double-angle-right"></i>产品类表</a></li>
 							<li class="home"><a  href="javascript:void(0)" name="Brand_Manage.html" title="品牌管理"  class="iframeurl"><i class="icon-double-angle-right"></i>品牌管理</a></li>
 							<li class="home"><a href="javascript:void(0)" name="Category_Manage.html" title="分类管理"  class="iframeurl"><i class="icon-double-angle-right"></i>分类管理</a></li>
 						</ul>
 					</li>
+					<li><a href="#" class="dropdown-toggle"><i class="icon-group"></i><span class="menu-text"> 管理员管理 </span><b class="arrow icon-angle-down"></b></a>
+						<ul class="submenu">
+							<li class="home"><a href="javascript:void(0)" name="{{route('admin_adminlist')}}" title="角色管理"  class="iframeurl"><i class="icon-double-angle-right"></i>角色管理</a></li>
+                            <li class="home"><a href="javascript:void(0)" name="administrator.html" title="管理员列表" class="iframeurl"><i class="icon-double-angle-right"></i>管理员列表</a></li>
+							<li class="home"><a href="javascript:void(0)" name="admin_info.html" title="个人信息" class="iframeurl"><i class="icon-double-angle-right"></i>个人信息</a></li>
+						</ul>
+					</li>
+                     
 					<li>
 					<a href="#" class="dropdown-toggle"><i class="icon-picture "></i><span class="menu-text"> 图片管理 </span><b class="arrow icon-angle-down"></b></a>
 						<ul class="submenu">
@@ -405,15 +415,7 @@ function link_operating(name,title){
 						  <li class="home"><a href="javascript:void(0)" name="Payment_Configure.html" title="支付配置" class="iframeurl"><i class="icon-double-angle-right"></i>支付配置</a></li>
 							</ul>
 						</li>
-                  <li>
-					<a href="#" class="dropdown-toggle"><i class="icon-user"></i><span class="menu-text"> 会员管理 </span><b class="arrow icon-angle-down"></b></a>
-                    <ul class="submenu">
-                    <li class="home"><a href="javascript:void(0)" name="user_list.html" title="会员列表"  class="iframeurl"><i class="icon-double-angle-right"></i>会员列表</a></li>
-                    <li class="home"><a href="javascript:void(0)" name="member-Grading.html" title="等级管理"  class="iframeurl"><i class="icon-double-angle-right"></i>等级管理</a></li>
-                    <li class="home"><a href="javascript:void(0)" name="integration.html" title="会员记录管理"  class="iframeurl"><i class="icon-double-angle-right"></i>会员记录管理</a></li>
-
-                   </ul>
-				  </li>
+                  
 				  <li><a href="#" class="dropdown-toggle"><i class="icon-laptop"></i><span class="menu-text"> 店铺管理 </span><b class="arrow icon-angle-down"></b></a>
 							<ul class="submenu">
 								<li class="home"><a href="javascript:void(0)" name="Shop_list.html" title="店铺列表" class="iframeurl"><i class="icon-double-angle-right"></i>店铺列表</a></li>
