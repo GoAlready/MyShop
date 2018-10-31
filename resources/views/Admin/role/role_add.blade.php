@@ -6,56 +6,40 @@
 	<meta name="renderer" content="webkit|ie-comp|ie-stand">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
-	<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-	<link rel="stylesheet" href="css/style.css" />
-	<link href="assets/css/codemirror.css" rel="stylesheet">
-	<link rel="stylesheet" href="assets/css/ace.min.css" />
+	<link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="/css/style.css" />
+	<link href="/assets/css/codemirror.css" rel="stylesheet">
+	<link rel="stylesheet" href="/assets/css/ace.min.css" />
 	<link rel="stylesheet" href="font/css/font-awesome.min.css" />
 	<!--[if lte IE 8]>
-		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		  <link rel="stylesheet" href="/assets/css/ace-ie.min.css" />
 		<![endif]-->
-	<script src="js/jquery-1.9.1.min.js"></script>
-	<script src="assets/js/bootstrap.min.js"></script>
-	<script src="assets/js/typeahead-bs2.min.js"></script>
-	<script src="assets/js/jquery.dataTables.min.js"></script>
-	<script src="assets/js/jquery.dataTables.bootstrap.js"></script>
-	<script src="assets/layer/layer.js" type="text/javascript"></script>
-	<script src="assets/laydate/laydate.js" type="text/javascript"></script>
-	<script src="js/dragDivResize.js" type="text/javascript"></script>
+	<script src="/js/jquery-1.9.1.min.js"></script>
+	<script src="/assets/js/bootstrap.min.js"></script>
+	<script src="/assets/js/typeahead-bs2.min.js"></script>
+	<script src="/assets/js/jquery.dataTables.min.js"></script>
+	<script src="/assets/js/jquery.dataTables.bootstrap.js"></script>
+	<script src="/assets/layer/layer.js" type="text/javascript"></script>
+	<script src="/assets/laydate/laydate.js" type="text/javascript"></script>
+	<script src="/js/dragDivResize.js" type="text/javascript"></script>
 	<title>添加权限</title>
 </head>
 
 <body>
 	<div class="Competence_add_style clearfix">
 		<div class="left_Competence_add">
-			<div class="title_name">添加权限</div>
+			<div class="title_name">添加角色</div>
 			<div class="Competence_add">
-				<div class="form-group"><label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 权限名称 </label>
+				<div class="form-group"><label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 角色名称 </label>
 					<div class="col-sm-9"><input type="text" id="form-field-1" placeholder="" name="权限名称" class="col-xs-10 col-sm-5"></div>
 				</div>
-				<div class="form-group"><label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 权限描述 </label>
-					<div class="col-sm-9"><textarea name="权限描述" class="form-control" id="form_textarea" placeholder="" onkeyup="checkLength(this);"></textarea><span
-						 class="wordage">剩余字数：<span id="sy" style="color:Red;">200</span>字</span></div>
+				<div class="form-group"><label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 角色描述 </label>
+					<div class="col-sm-9"><textarea name="权限描述" class="form-control" id="form_textarea" placeholder="" onkeyup="checkLength(this);"></textarea></div>
 				</div>
-				<div class="form-group"><label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 用户选择 </label>
-					<div class="col-sm-9">
-						<label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl"> sm123456</span></label>
-						<label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl"> admin</span></label>
-						<label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl"> admin123456</span></label>
-						<label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl"> style_name</span></label>
-						<label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl"> username</span></label>
-						<label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl"> adminname</span></label>
-						<label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl"> sm12345</span></label>
-						<label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl"> 天使的行</span></label>
-					</div>
-				</div>
+				
 				<!--按钮操作-->
 				<div class="Button_operation">
-					<button onclick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="fa fa-save "></i>
-						保存并提交</button>
-					<button onclick="article_save();" class="btn btn-secondary  btn-warning" type="button"><i class="fa fa-reply"></i>
-						返回上一步</button>
-					<button onclick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+					<button class="btn btn-primary radius" type="submit"><i class="fa fa-save"></i>保存并提交</button>
 				</div>
 			</div>
 		</div>

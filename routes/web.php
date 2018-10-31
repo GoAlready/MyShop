@@ -53,13 +53,24 @@
             Route::get('/artsort_delete','Article_cateController@delete')->name('admin_artsort_delete');
 
             // 管理员管理
-            Route::get('/admin_role','AdminController@list')->name('admin_adminlist');
+            Route::get('/admin_list','AdminController@list')->name('admin_adminlist');
             Route::post('/admin_add','AdminController@add')->name('admin_adminadd');
-            Route::get('/admin_edit','AdminController@edit')->name('admin_adminedit');
-            Route::get('/admin_update','AdminController@update')->name('admin_adminupdate');
-            // Route::get('/admin_privilege','AdminController@')->name('admin_privilege');
-            // Route::get('/admin_info','AdminController@bbb')->name('admin_admininfo');            
+            Route::get('/admin_edit/{id}','AdminController@edit')->name('admin_adminedit');
+            Route::post('/admin_update/{id}','AdminController@update')->name('admin_adminupdate');
+            Route::get('/admin_delete','AdminController@delete')->name('admin_admindelete');
+            // 角色管理
+            Route::get('/role_list','RoleController@list')->name('admin_rolelist');
+            Route::get('/role_create','RoleController@create')->name('admin_rolecreate'); 
+            Route::post('/role_add','RoleController@add')->name('admin_roleadd'); 
+            Route::get('/role_edit','RoleController@edit')->name('admin_roleedit'); 
+            Route::post('/role_update','RoleController@create')->name('admin_roleupdate'); 
 
+            // 权限管理
+            Route::get('/pri_list','PrivilegeController@list')->name('admin_prilist');
+            Route::get('/pri_create','PrivilegeController@create')->name('admin_pricreate'); 
+            Route::post('/pri_add','PrivilegeController@add')->name('admin_priadd'); 
+            Route::get('/pri_edit','PrivilegeController@edit')->name('admin_priedit'); 
+            Route::post('/pri_update','PrivilegeController@create')->name('admin_priupdate'); 
             // 会员管理
 
             // 商品管理

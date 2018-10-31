@@ -25,74 +25,59 @@
 <body>
 <div class="margin clearfix" style="padding-left:450px;">
     <div class="article_style">
-    <form action="" method="post">
+    <form action="{{route('admin_adminupdate',['id'=>$admin['id']])}}" method="post">
         @csrf
         <div class="add_content" id="form-article-add">
 		<div class="form-group">
 					<label class="form-label"><span class="c-red">*</span>管理员：</label>
 					<div class="formControls">
-						<input type="text" class="input-text" value="" placeholder="" id="user-name" name="adminname" datatype="*2-16"
+						<input type="text" class="input-text" value="{{$admin['adminname']}}" placeholder="" id="user-name" name="adminname" datatype="*2-16"
 						 nullmsg="用户名不能为空">
-					</div>
-					<div class="col-4"> <span class="Validform_checktip"></span></div>
-				</div>
-				<div class="form-group">
-					<label class="form-label"><span class="c-red">*</span>初始密码：</label>
-					<div class="formControls">
-						<input type="password" placeholder="密码" name="userpassword" autocomplete="off" value="" class="input-text"
-						 datatype="*6-20" nullmsg="密码不能为空">
-					</div>
-					<div class="col-4"> <span class="Validform_checktip"></span></div>
-				</div>
-				<div class="form-group">
-					<label class="form-label "><span class="c-red">*</span>确认密码：</label>
-					<div class="formControls ">
-						<input type="password" placeholder="确认新密码" autocomplete="off" class="input-text Validform_error" errormsg="您两次输入的新密码不一致！"
-						 datatype="*" nullmsg="请再输入一次新密码！" recheck="userpassword" id="newpassword2" name="newpassword2">
 					</div>
 					<div class="col-4"> <span class="Validform_checktip"></span></div>
 				</div>
 				<div class="form-group">
 					<label class="form-label "><span class="c-red">*</span>性别：</label>
 					<div class="formControls  skin-minimal">
-						<label><input name="sex" type="radio" class="ace" value="0" checked="checked"><span class="lbl">保密</span></label>&nbsp;&nbsp;
-						<label><input name="sex" type="radio" class="ace" value="1"><span class="lbl">男</span></label>&nbsp;&nbsp;
-						<label><input name="sex" type="radio" class="ace" value="2"><span class="lbl">女</span></label>
+						
+							<label><input name="sex" type="radio" class="ace" value="0" {{ $admin['sex']==0 ? 'checked' : ''  }}><span class="lbl">保密</span></label>&nbsp;&nbsp;
+							<label><input name="sex" type="radio" class="ace" value="1" {{ $admin['sex']==1 ? 'checked' : ''  }}> <span class="lbl">男</span></label>&nbsp;&nbsp;
+							<label><input name="sex" type="radio" class="ace" value="2" {{ $admin['sex']==2 ? 'checked' : ''  }}><span class="lbl">女</span></label>
 					</div>
 					<div class="col-4"> <span class="Validform_checktip"></span></div>
 				</div>
 				<div class="form-group">
 					<label class="form-label "><span class="c-red">*</span>手机：</label>
 					<div class="formControls ">
-						<input type="text" class="input-text" value="" placeholder="" id="user-tel" name="phone" datatype="m" nullmsg="手机不能为空">
+						<input type="text" class="input-text" value="{{$admin['phone']}}" placeholder="" id="user-tel" name="phone" datatype="m" nullmsg="手机不能为空">
 					</div>
 					<div class="col-4"> <span class="Validform_checktip"></span></div>
 				</div>
 				<div class="form-group">
 					<label class="form-label"><span class="c-red">*</span>邮箱：</label>
 					<div class="formControls ">
-						<input type="text" class="input-text" placeholder="@" name="email" id="email" datatype="e" nullmsg="请输入邮箱！">
+						<input type="text" class="input-text" value="{{$admin['email']}}" placeholder="@" name="email" id="email" datatype="e" nullmsg="请输入邮箱！">
 					</div>
 					<div class="col-4"> <span class="Validform_checktip"></span></div>
 				</div>
 				<div class="form-group">
 					<label class="form-label"><span class="c-red">*</span>QQ：</label>
 					<div class="formControls ">
-						<input type="text" class="input-text" placeholder="" name="qq" id="qq" datatype="" nullmsg="请输入qq号码！">
+						<input type="text" class="input-text" placeholder="" value="{{$admin['qq']}}" name="qq" id="qq" datatype="" nullmsg="请输入qq号码！">
 					</div>
 					<div class="col-4"> <span class="Validform_checktip"></span></div>
 				</div>
 				<div class="form-group">
 					<label class="form-label">角色：</label>
-					<div class="formControls ">
-						<span class="select-box" style="width:150px;">
-							<select class="select" name="role_id" size="1">
-								<?php foreach($role as $k):?>
-									<option value="{{$k->id}}">{{$k->role_name}}</option>
-								<?php endforeach; ?>
-							</select>
-						</span>
-					</div>
+					<span class="select-box" style="width:150px;">
+						@foreach($role as $k)
+							@if(in_array($k['id'],$role_id))
+								<input name="role_id[]" type="checkbox" checked="checked" class="ace" value="{{$k['id']}}"><span class="lbl">{{$k['role_name']}}</span>
+							@else
+								<input name="role_id[]" type="checkbox" class="ace" value="{{$k['id']}}"><span class="lbl">{{$k['role_name']}}</span>
+							@endif
+						@endforeach
+					</span>
 				</div>
 				<div>
 					<input class="btn btn-primary radius" type="submit" id="Add_Administrator" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">

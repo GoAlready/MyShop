@@ -224,7 +224,7 @@ function link_operating(name,title){
 				<div class="navbar-header pull-left">
 					<a href="#" class="navbar-brand">
 						<small>					
-						<img src="/images/logo.png" width="470px">
+						<img src="/images/logo1.png" width="470px">
 						</small>
 					</a><!-- /.brand -->
 				</div><!-- /.navbar-header -->
@@ -383,9 +383,9 @@ function link_operating(name,title){
 					</li>
 					<li><a href="#" class="dropdown-toggle"><i class="icon-group"></i><span class="menu-text"> 管理员管理 </span><b class="arrow icon-angle-down"></b></a>
 						<ul class="submenu">
-							<li class="home"><a href="javascript:void(0)" name="{{route('admin_adminlist')}}" title="角色管理"  class="iframeurl"><i class="icon-double-angle-right"></i>角色管理</a></li>
-                            <li class="home"><a href="javascript:void(0)" name="administrator.html" title="管理员列表" class="iframeurl"><i class="icon-double-angle-right"></i>管理员列表</a></li>
-							<li class="home"><a href="javascript:void(0)" name="admin_info.html" title="个人信息" class="iframeurl"><i class="icon-double-angle-right"></i>个人信息</a></li>
+							<li class="home"><a href="javascript:void(0)" name="{{route('admin_adminlist')}}" title="管理员管理"  class="iframeurl"><i class="icon-double-angle-right"></i>管理员管理</a></li>
+                            <li class="home"><a href="javascript:void(0)" name="{{route('admin_rolelist')}}" title="角色管理" class="iframeurl"><i class="icon-double-angle-right"></i>角色管理</a></li>
+							<li class="home"><a href="javascript:void(0)" name="{{route('admin_prilist')}}" title="权限管理" class="iframeurl"><i class="icon-double-angle-right"></i>权限管理</a></li>
 						</ul>
 					</li>
                      
