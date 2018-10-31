@@ -39,7 +39,7 @@
             Route::get('/home','IndexController@home')->name('admin_home');
             // 退出
             Route::get('/logout','LoginController@logout')->name('admin_logout');
-            
+
             // 文章管理
             {
                 Route::get('/artlist','ArticleController@list')->name('admin_artlist');
@@ -87,7 +87,34 @@
             }
 
             // 会员管理
+            {
+                // 页面
+                {
+                    // 会员列表
+                    Route::get("/member/list","UserController@getMemberList")->name("admin_member_list");
+                    // 会员等级管理
+                    // Route::get("/member/level/management","UserController@getMemberLevelManagement")->name("admin_member_list");
+                    // 会员记录管理
+                    // Route::get("/member/list","UserController@")->name("admin_member_list");
+                }
+                // 数据
+                {   
+                    // 会员列表
+                    {
+                        // 会员激活/禁用
+                        Route::get('/member/disableorenable',"UserController@memberDisableOrEnable");
+                        // 会员信息获取
+                        Route::get('/member/info',"UserController@getMemberInfo");
+                        // 会员信息修改
+                        Route::post("/member/info/update","UserController@updateMemberInfo");
+                        // 删除会员
+                        Route::get('/member/delete', 'UserController@deleteMember');
+                        // 新增会员
+                        Route::post('/member/insert', 'UserController@memberInsert');
 
+                    }
+                }
+            }
             // 商品管理
         });    
     });

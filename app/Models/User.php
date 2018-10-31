@@ -11,4 +11,6 @@ class User extends Model
     protected $table = 'user';
     // 设置白名单
     protected $fillable = ['username','mobile','password'];
+    // 隐藏的字段
+    protected $hidden = ['password'];
 }
