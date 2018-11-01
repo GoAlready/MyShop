@@ -118,6 +118,16 @@
                 }
             }
             // 商品管理
+            {
+                // 商品分类
+                {
+                    Route::get('/goods_type',"Goods_typeController@list")->name("admin_goods_typelist");
+                    Route::post('/goods_typeadd',"Goods_typeController@add")->name("admin_goods_typeadd");
+                    Route::post('/goods_typeupdate',"Goods_typeController@update")->name("admin_goods_typeupdate");
+                    Route::post('/goods_typedelete',"Goods_typeController@delete")->name("admin_goods_typedelete");
+                }
+            }
+            
         });    
     });
     
