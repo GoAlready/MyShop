@@ -25,10 +25,10 @@ class Login
         else
         {
             // 获取要访问的路径
-            $path = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '/admin/index';
+            $path = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '/admin';
 
             // 设置一个白名单
-            $whiteList = ['/admin/index','/admin/logout'];
+            $whiteList = ['/admin','/admin/logout'];
             // 判断是否有访问的权限
             if(!in_array($path,array_merge($whiteList,session('url_path'))))
             {
