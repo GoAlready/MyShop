@@ -75,6 +75,5 @@ class ArticleController extends Controller
     {
         $id = $_GET['id'];
         Article::destroy($id);
-
     }
 }

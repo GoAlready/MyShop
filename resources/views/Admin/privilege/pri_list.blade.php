@@ -29,7 +29,7 @@
 		<div class="border clearfix">
 			<span class="l_f">
 				<a href="{{route('admin_pricreate')}}" id="Competence_add" class="btn btn-warning" title="添加权限"><i class="fa fa-plus"></i> 添加权限</a>
-				<a href="javascript:ovid()" class="btn btn-danger"><i class="fa fa-trash"></i> 批量删除</a>
+				<a href="javascript:ovid()" onclick="del()" class="btn btn-danger"><i class="fa fa-trash"></i> 批量删除</a>
 			</span>
 			<span class="r_f">共：<b>5</b>类</span>
 		</div>
@@ -48,7 +48,7 @@
 				<tbody>
 					@foreach($privilege as $v)
 					<tr>
-						<td class="center"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
+						<td class="center"><label><input type="checkbox" value="{{$v['id']}}" class="ace"><span class="lbl"></span></label></td>
 						<td>{{$v['id']}}</td>
 						<td>{{$v['pri_name']}}</td>
 						<td>{{$v['url_path']}}</td>
@@ -58,8 +58,8 @@
 							<td class="hidden-480">{{$v['parent']['pri_name']}}</td>
 						@endif
 						<td>
-							<a title="编辑" onclick="Competence_modify('560')" href="{{route('admin_priedit')}}" class="btn btn-xs btn-info"><i class="fa fa-edit bigger-120"></i></a>
-							<a title="删除" href="javascript:;" onclick="Competence_del(this,'1')" class="btn btn-xs btn-warning"><i class="fa fa-trash  bigger-120"></i></a>
+							<a title="编辑" onclick="Competence_modify('560')" href="{{route('admin_priedit',['id'=>$v['id']])}}" class="btn btn-xs btn-info"><i class="fa fa-edit bigger-120"></i></a>
+							<a title="删除" href="javascript:;" onclick="Competence_del(this,{{$v['id']}})" class="btn btn-xs btn-warning"><i class="fa fa-trash  bigger-120"></i></a>
 						</td>
 					</tr>
 					@endforeach
@@ -122,6 +122,7 @@
 	function Competence_del(obj, id) {
 		layer.confirm('确认要删除吗？', function (index) {
 			$(obj).parents("tr").remove();
+			$.ajax("/admin/pri_delete?id="+id);
 			layer.msg('已删除!', { icon: 1, time: 1000 });
 		});
 	}
@@ -161,4 +162,28 @@
 		parent.layer.close(index);
 
 	});
+
+	// 批量删除
+	function del()
+	{
+		
+		var checked = [];
+		$('input:checkbox:checked').each(function(){
+			checked.push($(this).val());
+		});
+		if(checked.length>=1)
+		{
+			for(let i=0;i<checked.length;i++)
+			{
+				$.ajax("/admin/pri_delete?id="+checked[i]);
+			}
+
+			$('input:checkbox:checked').parents("tr").remove();
+
+		}
+		else
+		{
+			alert("请选择要删除的文章");
+		}
+	}
 </script>

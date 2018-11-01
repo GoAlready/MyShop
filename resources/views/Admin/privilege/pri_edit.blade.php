@@ -25,26 +25,34 @@
 <body>
 <div class="margin clearfix">
     <div class="article_style">
-    <form action="{{route('admin_artadd')}}" method="post">
+    <form action="{{route('admin_priupdate',['id'=>$message['id']])}}" method="post">
         @csrf
         <div class="add_content" id="form-article-add">
             <ul>
                 <li class="clearfix Mandatory">
                     <label class="label_name"><i>*</i>权限名称</label>
-                    <span class="formControls col-10"><input name="title" type="text" id="form-field-1" class="col-xs-10 col-sm-5 "></span>
+                    <span class="formControls col-10"><input name="pri_name" type="text" id="form-field-1" class="col-xs-10 col-sm-5" value="{{$message['pri_name']}}"></span>
                 </li>
                 <li class="clearfix Mandatory">
                     <label class="label_name"><i>*</i>拥有权限</label>
-                    <span class="formControls col-10"><input name="descript" type="text" id="form-field-1" class="col-xs-10 col-sm-6 "></span>
+                    <span class="formControls col-10"><input name="url_path" type="text" id="form-field-1" class="col-xs-10 col-sm-6" value="{{$message['url_path']}}"></span>
                 </li>
             
                 <li class="clearfix"><label class="label_name"><i>*</i>所属分类</label>
                     <span class="formControls col-4">
-                        <select name="cateid" class="form-control" id="form-field-select-1">
-                            <option value="">--选择所属分类--</option>
-                         
-                                <option value=""></option>
-                 
+                        <select name="parent_id" class="form-control" id="form-field-select-1">
+                            <option value="0">--根级分类--</option>
+                            @foreach($pri as $v)
+                                @foreach($v['level'] as $k)
+                                    @if($message['parent_id'] == $k['id'])
+                                        <option selected="selected" value="{{$k['id']}}">--{{$k['pri_name']}}--</option>   
+                                    @elseif($message['parent_id'] == $v['id'])
+                                        <option selected="selected" value="{{$v['id']}}">--{{$v['pri_name']}}--</option>
+                                    @else
+                                        <option value="0">--根级分类--</option>
+                                    @endif
+                                @endforeach
+                            @endforeach
                         </select>
                     </span>
                 </li>

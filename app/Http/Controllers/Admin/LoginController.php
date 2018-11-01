@@ -12,6 +12,8 @@ use App\Models\Admin;
 
 use Hash;
 
+use DB;
+
 class LoginController extends Controller
 {
     // 显示登录页面
@@ -29,11 +31,21 @@ class LoginController extends Controller
             if(Hash::check($req->password,$admin->password))
             {
                 session([
-                    'id' => $admin->id,
+                    'adminid' => $admin->id,
                     'adminname' => $admin->adminname,
                 ]);
-                return redirect()->route('admin_index');
+                $count = DB::select("select count(*) from admin_role where role_id = 1 and admin_id = {$admin->id}");   
+                if($count > 0)
+                {
+                    session(['root' => true]);
+                }
+                else
+                {
+                    session(['url_path' => Admin::getUrl($admin->id)]);
+                }
+                return redirect()->route('admin_index');        
             }
+           
         }
         else
         {

@@ -63,14 +63,16 @@
             Route::get('/role_create','RoleController@create')->name('admin_rolecreate'); 
             Route::post('/role_add','RoleController@add')->name('admin_roleadd'); 
             Route::get('/role_edit','RoleController@edit')->name('admin_roleedit'); 
-            Route::post('/role_update','RoleController@create')->name('admin_roleupdate'); 
-
+            Route::post('/role_update','RoleController@update')->name('admin_roleupdate'); 
+            Route::get('/role_delete','RoleController@delete')->name('admin_roledelete');
             // 权限管理
             Route::get('/pri_list','PrivilegeController@list')->name('admin_prilist');
             Route::get('/pri_create','PrivilegeController@create')->name('admin_pricreate'); 
             Route::post('/pri_add','PrivilegeController@add')->name('admin_priadd'); 
             Route::get('/pri_edit','PrivilegeController@edit')->name('admin_priedit'); 
-            Route::post('/pri_update','PrivilegeController@create')->name('admin_priupdate'); 
+            Route::post('/pri_update','PrivilegeController@update')->name('admin_priupdate'); 
+            Route::get('/pri_delete','PrivilegeController@delete')->name('admin_pridelete');
+
             // 会员管理
 
             // 商品管理

@@ -29,7 +29,7 @@
 		<div class="border clearfix">
 			<span class="l_f">
 				<a href="{{route('admin_rolecreate')}}" id="Competence_add" class="btn btn-warning" title="添加角色"><i class="fa fa-plus"></i> 添加角色</a>
-				<a href="javascript:ovid()" class="btn btn-danger"><i class="fa fa-trash"></i> 批量删除</a>
+				<a href="javascript:ovid()" onclick="del()" class="btn btn-danger"><i class="fa fa-trash"></i> 批量删除</a>
 			</span>
 			<span class="r_f">共：<b>5</b>类</span>
 		</div>
@@ -38,38 +38,37 @@
 				<thead>
 					<tr>
 						<th class="center"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
+						<th>ID</th>
 						<th>权限名称</th>
-						<th>用户名称</th>
-						<th class="hidden-480">描述</th>
+						<th>拥有权限</th>
+						<th class="hidden-480">简介</th>
 						<th class="hidden-480">操作</th>
 					</tr>
 				</thead>
 				<tbody>
+					@foreach($role as $v)
 					<tr>
-						<td class="center"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-						<td>超级管理员</td>
-						<td class="hidden-480">admin</td>
-						<td>拥有至高无上的权利,操作系统的所有权限</td>
+						<td class="center"><label><input type="checkbox" value="{{$v['id']}}"class="ace"><span class="lbl"></span></label></td>
+						<td>{{$v['id']}}</td>						
+						<td>{{$v['role_name']}}</td>
+
+						<td class="hidden-480">
+						@foreach($v['privilege'] as $k)
+							{{$k['pri_name']}}
+						@endforeach
+						</td>
+
+						<td>{{$v['descript']}}</td>
 						<td>
-							<a title="编辑" onclick="Competence_modify('560')" href="{{route('admin_roleedit')}}" class="btn btn-xs btn-info"><i class="fa fa-edit bigger-120"></i></a>
-							<a title="删除" href="javascript:;" onclick="Competence_del(this,'1')" class="btn btn-xs btn-warning"><i class="fa fa-trash  bigger-120"></i></a>
+							<a title="编辑" onclick="Competence_modify('560')" href="{{route('admin_roleedit',['id'=>$v['id']])}}" class="btn btn-xs btn-info"><i class="fa fa-edit bigger-120"></i></a>
+							<a title="删除" href="javascript:;" onclick="Competence_del(this,{{$v['id']}})" class="btn btn-xs btn-warning"><i class="fa fa-trash  bigger-120"></i></a>
 						</td>
 					</tr>
+					@endforeach
 				</tbody>
 			</table>
 		</div>
 	</div>
-	<!--添加权限样式-->
-	<!-- <div id="Competence_add_style" style="display:none">
-   <div class="Competence_add_style">
-     <div class="form-group"><label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 权限名称 </label>
-       <div class="col-sm-9"><input type="text" id="form-field-1" placeholder=""  name="权限名称" class="col-xs-10 col-sm-5"></div>
-	</div>
-     <div class="form-group"><label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 权限说明 </label>
-       <div class="col-sm-9"><textarea name="权限说明" class="form-control" id="form_textarea" placeholder="" onkeyup="checkLength(this);"></textarea><span class="wordage">剩余字数：<span id="sy" style="color:Red;">200</span>字</span></div>
-	</div>
-   </div> 
-  </div>-->
 </body>
 
 </html>
@@ -114,6 +113,7 @@
 	function Competence_del(obj, id) {
 		layer.confirm('确认要删除吗？', function (index) {
 			$(obj).parents("tr").remove();
+			$.ajax("/admin/role_delete?id="+id);
 			layer.msg('已删除!', { icon: 1, time: 1000 });
 		});
 	}
@@ -153,4 +153,28 @@
 		parent.layer.close(index);
 
 	});
+
+	// 批量删除
+	function del()
+	{
+		
+		var checked = [];
+		$('input:checkbox:checked').each(function(){
+			checked.push($(this).val());
+		});
+		if(checked.length>=1)
+		{
+			for(let i=0;i<checked.length;i++)
+			{
+				$.ajax("/admin/role_delete?id="+checked[i]);
+			}
+
+			$('input:checkbox:checked').parents("tr").remove();
+
+		}
+		else
+		{
+			alert("请选择要删除的文章");
+		}
+	}
 </script>

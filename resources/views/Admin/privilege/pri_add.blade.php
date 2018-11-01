@@ -25,25 +25,28 @@
 <body>
 <div class="margin clearfix">
     <div class="article_style">
-    <form action="{{route('admin_artadd')}}" method="post">
+    <form action="{{route('admin_priadd')}}" method="post">
         @csrf
         <div class="add_content" id="form-article-add">
             <ul>
                 <li class="clearfix Mandatory">
                     <label class="label_name"><i>*</i>权限名称</label>
-                    <span class="formControls col-10"><input name="title" type="text" id="form-field-1" class="col-xs-10 col-sm-5 "></span>
+                    <span class="formControls col-10"><input name="pri_name" type="text" id="form-field-1" class="col-xs-10 col-sm-5 "></span>
                 </li>
                 <li class="clearfix Mandatory">
                     <label class="label_name"><i>*</i>拥有权限</label>
-                    <span class="formControls col-10"><input name="descript" type="text" id="form-field-1" class="col-xs-10 col-sm-6 "></span>
+                    <span class="formControls col-10"><input name="url_path" type="text" id="form-field-1" class="col-xs-10 col-sm-6 "></span>
                 </li>
             
                 <li class="clearfix"><label class="label_name"><i>*</i>所属分类</label>
                     <span class="formControls col-4">
-                        <select name="roleid" class="form-control" id="form-field-select-1">
-                            <option value="">--根级分类--</option>
+                        <select name="parent_id" class="form-control" id="form-field-select-1">
+                            <option value="0">--根级分类--</option>
                             @foreach($pri as $v)
                                 <option value="{{$v['id']}}">--{{$v['pri_name']}}--</option>
+                                @foreach($v['level'] as $k)
+                                <option value="{{$k['id']}}">--{{$k['pri_name']}}--</option>
+                                @endforeach
                             @endforeach
                         </select>
                     </span>

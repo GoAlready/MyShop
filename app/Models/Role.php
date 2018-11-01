@@ -12,8 +12,8 @@ class Role extends Model
     // 设置白名单
     protected $fillable = ['role_name','descript'];
 
-    public function admin()
+    public function privilege()
     {
-        return $this->belongsToMany('App\Models\Admin','admin_role','admin_id','role_id');
+        return $this->belongsToMany('App\Models\Privilege','role_privilege','role_id','pri_id');
     }
 }

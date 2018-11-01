@@ -15,10 +15,30 @@ class Login
      */
     public function handle($request, Closure $next)
     {
-        if(!session('id'))
+        if(!session('adminid'))
         {
             return redirect()->route("admin_login");
         }
+        if (session('root')){
+          
+        }
+        else
+        {
+            // 获取要访问的路径
+            $path = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '/admin/index';
+
+            // 设置一个白名单
+            $whiteList = ['/admin/index','/admin/logout'];
+            // 判断是否有访问的权限
+            if(!in_array($path,array_merge($whiteList,session('url_path'))))
+            {
+                die("无权访问!");
+            }
+
+        }
+        
+
+
         return $next($request);
     }
 }
