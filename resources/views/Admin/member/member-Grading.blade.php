@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link href="/assets/css/codemirror.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/ace.min.css" />
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/font/css/font-awesome.min.css" />
     <!--[if lte IE 8]>
 		  <link rel="stylesheet" href="/assets/css/ace-ie.min.css" />
@@ -22,7 +23,8 @@
     <script src="/assets/js/jquery.dataTables.bootstrap.js"></script>
     <script src="/assets/layer/layer.js" type="text/javascript"></script>
     <script src="/assets/dist/echarts.js"></script>
-
+    <script src="/assets/dist/chart/funnel.js"></script>
+    <script src="/assets/dist/chart/pie.js"></script>
     <title>会员等级</title>
 </head>
 
@@ -39,16 +41,10 @@
                         </div>
                         <div class="widget-body">
                             <ul class="b_P_Sort_list">
-                                <li><i class="orange  fa fa-user-secret"></i><a href="#">全部(235)</a></li>
-                                <li><i class="fa fa-diamond pink "></i> <a href="#">普通会员(235)</a></li>
-                                <li> <i class="fa fa-diamond pink "></i> <a href="#">铁牌会员(2215)</a> </li>
-                                <li> <i class="fa fa-diamond pink "></i> <a href="#">铜牌会员(3456)</a></li>
-                                <li><i class="fa fa-diamond pink "></i> <a href="#">银牌会员(4332)</a></li>
-                                <li><i class="fa fa-diamond pink "></i> <a href="#">金牌会员(1332)</a></li>
-                                <li> <i class="fa fa-diamond grey"></i> <a href="#">钻石会员(4543)</a></li>
-                                <li> <i class="fa fa-diamond red"></i> <a href="#">红钻会员(343)</a></li>
-                                <li> <i class="fa fa-diamond blue"></i> <a href="#">蓝钻会员(2343)</a></li>
-                                <li> <i class="fa fa-diamond grey"></i> <a href="#">黑钻2(53)</a></li>
+                                <li><i class="orange  fa fa-user-secret"></i><a href="#">全部({{count($UserPoints)}})</a></li>
+                                @foreach ($UserPoints as $item)
+                                <li><i class="fa fa-diamond pink "></i> <a href="#">{{$item->name}}({{$item->count}})</a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -70,7 +66,6 @@
                         <table class="table table-striped table-bordered table-hover" id="sample-table">
                             <thead>
                                 <tr>
-                                    <th width="25"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
                                     <th width="80">ID</th>
                                     <th width="100">用户名</th>
                                     <th width="80">性别</th>
@@ -85,96 +80,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-                                    <td>1</td>
-                                    <td><u style="cursor:pointer" class="text-primary" onclick="member_show('张三','member-show.html','10001','500','400')">张三</u></td>
-                                    <td>男</td>
-                                    <td>13000000000</td>
-                                    <td>admin@mail.com</td>
-                                    <td>2014-6-11 11:11:42</td>
-                                    <td>普通用户</td>
-                                    <td class="text-l">345</td>
-                                    <td class="td-status"><span class="label label-success radius">已启用</span></td>
-                                    <td class="td-manage">
-                                        <a onClick="member_stop(this,'10001')" href="javascript:;" title="停用" class="btn btn-xs btn-success"><i
-                                                class="fa fa-check bigger-120"></i></a>
-                                        <a title="删除" href="javascript:;" onclick="member_del(this,'1')" class="btn btn-xs btn-warning"><i
-                                                class="fa fa-trash  bigger-120"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-                                    <td>2</td>
-                                    <td><u style="cursor:pointer" class="text-primary" onclick="member_show('张小泉','member-show.html','1031','500','400')">张小泉</u></td>
-                                    <td>男</td>
-                                    <td>13000000000</td>
-                                    <td>admin@mail.com</td>
-                                    <td>2014-6-11 11:11:42</td>
-                                    <td>普通用户</td>
-                                    <td class="text-l">1345</td>
-                                    <td class="td-status"><span class="label label-success radius">已启用</span></td>
-                                    <td class="td-manage">
-                                        <a onClick="member_stop(this,'10001')" href="javascript:;" title="停用" class="btn btn-xs btn-success"><i
-                                                class="fa fa-check bigger-120"></i></a>
-                                        <a title="删除" href="javascript:;" onclick="member_del(this,'1')" class="btn btn-xs btn-warning"><i
-                                                class="fa fa-trash  bigger-120"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-                                    <td>3</td>
-                                    <td><u style="cursor:pointer" class="text-primary" onclick="member_show('张小泉','member-show.html','10301','500','400')">张小泉</u></td>
-                                    <td>男</td>
-                                    <td>13000000000</td>
-                                    <td>admin@mail.com</td>
-                                    <td>2014-6-11 11:11:42</td>
-                                    <td>银牌用户</td>
-                                    <td class="text-l">645</td>
-                                    <td class="td-status"><span class="label label-success radius">已启用</span></td>
-                                    <td class="td-manage">
-                                        <a onClick="member_stop(this,'10001')" href="javascript:;" title="停用" class="btn btn-xs btn-success"><i
-                                                class="fa fa-check bigger-120"></i></a>
-                                        <a title="删除" href="javascript:;" onclick="member_del(this,'1')" class="btn btn-xs btn-warning"><i
-                                                class="fa fa-trash  bigger-120"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-                                    <td>4</td>
-                                    <td><u style="cursor:pointer" class="text-primary" onclick="member_show('张小泉','member-show.html','10001','500','400')">张小泉</u></td>
-                                    <td>男</td>
-                                    <td>13000000000</td>
-                                    <td>admin@mail.com</td>
-                                    <td>2014-6-11 11:11:42</td>
-                                    <td>银牌用户</td>
-                                    <td class="text-l">645</td>
-                                    <td class="td-status"><span class="label label-success radius">已启用</span></td>
-                                    <td class="td-manage">
-                                        <a onClick="member_stop(this,'10001')" href="javascript:;" title="停用" class="btn btn-xs btn-success"><i
-                                                class="fa fa-check bigger-120"></i></a>
-                                        <a title="删除" href="javascript:;" onclick="member_del(this,'1')" class="btn btn-xs btn-warning"><i
-                                                class="fa fa-trash  bigger-120"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-                                    <td>5</td>
-                                    <td><u style="cursor:pointer" class="text-primary" onclick="member_show('张小泉','member-show.html','10001','500','400')">张小泉</u></td>
-                                    <td>男</td>
-                                    <td>13000000000</td>
-                                    <td>admin@mail.com</td>
-                                    <td>2014-6-11 11:11:42</td>
-                                    <td>银牌用户</td>
-                                    <td class="text-l">345</td>
-                                    <td class="td-status"><span class="label label-success radius">已启用</span></td>
-                                    <td class="td-manage">
-                                        <a onClick="member_stop(this,'10001')" href="javascript:;" title="停用" class="btn btn-xs btn-success"><i
-                                                class="fa fa-check  bigger-120"></i></a>
-                                        <a title="删除" href="javascript:;" onclick="member_del(this,'1')" class="btn btn-xs btn-warning"><i
-                                                class="fa fa-trash  bigger-120"></i></a>
-                                    </td>
-                                </tr>
+                                {{-- 用户列表 --}}
+                            @foreach ($users as $item)
+                            <tr>
+                                <td>{{$item->id}}</td>
+                                <td><u style="cursor:pointer" class="text-primary" onclick="member_show('{{$item->username}}','member-show.html','10001','500','400')">{{$item->username}}</u></td>
+                                <td>{{$item->gender==0?"保密":($item->gender==1?"男":($item->gender==2?"女":""))}}</td>
+                                <td>{{$item->mobile}}</td>
+                                <td>{{$item->email?:"未设置"}}</td>
+                                <td class="text-l">北京市 海淀区</td>
+                                <td>{{$item->created_at}}</td>
+                                <td>{{$item->points['name']}}</td>
+                                <td class="td-status"><span class="label {{$item->status?'label-success':'label-default'}} radius">{{$item->status?"已激活":'已停用'}}</span></td>
+                                <td class="td-manage">
+                                <a onClick='{{$item->status?"member_stop(this,$item->id)":"member_start(this,$item->id)"}}' href="javascript:;" title="{{$item->status?'停用':'激活'}}" class="btn btn-xs {{$item->status?'btn-default':'btn-success'}}"><i class="{{$item->status?'icon-ban-circle':'icon-key'}} bigger-120"></i></a>
+                                <a title="删除" href="javascript:;" onclick="member_del(this,{{$item->id}})" class="btn btn-xs btn-warning"><i class="icon-trash  bigger-120"></i></a>
+                                </td>
+                            </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -216,24 +139,51 @@
     function member_show(title, url, id, w, h) {
         layer_show(title, url + '#?=' + id, w, h);
     }
-    /*用户-停用*/
-    function member_stop(obj, id) {
-        layer.confirm('确认要停用吗？', function (index) {
-            $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs " onClick="member_start(this,id)" href="javascript:;" title="启用"><i class="fa fa-close bigger-120"></i></a>');
-            $(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
-            $(obj).remove();
-            layer.msg('已停用!', { icon: 5, time: 1000 });
-        });
-    }
-    /*用户-启用*/
-    function member_start(obj, id) {
-        layer.confirm('确认要启用吗？', function (index) {
-            $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs btn-success" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="fa fa-check  bigger-120"></i></a>');
-            $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
-            $(obj).remove();
-            layer.msg('已启用!', { icon: 6, time: 1000 });
-        });
-    }
+  /*用户-停用*/
+  function member_stop(obj, id) {
+    layer.confirm('确认要停用吗？', function (index) {
+      $.get("/admin/member/disableorenable/",{id:id,action:0} ,function(res){
+        if(res)
+        {
+          $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs btn-success" onClick="member_start(this,id)" href="javascript:;" title="激活"><i class="icon-key bigger-120"></i></a>');
+          $(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
+          $(obj).remove();
+          layer.msg('已停用!', { icon: 5, time: 1000 });
+        }else{
+          layer.msg('用户不存在!', { icon: 5, time: 1000 });
+        }
+      })
+    })
+  }
+  /*用户-激活*/
+  function member_start(obj, id) {
+    layer.confirm('确认要激活吗？', function (index) {
+      $.get("/admin/member/disableorenable/",{id:id,action:1} ,function(res){
+        if(res)
+        {
+          $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="icon-ban-circle bigger-120"></i></a>');
+          $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已激活</span>');
+          $(obj).remove();
+          layer.msg('已激活!', { icon: 6, time: 1000 });
+        }else{
+          layer.msg('用户不存在!', { icon: 5, time: 1000 });
+        }
+      })
+    })
+  }
+    /*用户-删除*/
+  function member_del(obj, id) {
+    layer.confirm('确认要删除吗？', function (index) {
+      $.get("/admin/member/delete",{id:[id]},((res)=>{
+        if(!res.error){
+          $(obj).parents("tr").remove();
+          layer.msg('已删除!', { icon: 1, time: 1000 });
+        }else{
+          layer.msg(res.error, { icon: 2, time: 1000 });
+        }
+      }))
+    })
+  }
 </script>
 <script type="text/javascript">
     //初始化宽度、高度  
@@ -276,7 +226,7 @@
 
                     x: 'center',
                     y: 'bottom',
-                    data: ['普通用户', '铁牌用户', '铜牌用户', '银牌用户', '金牌用户', '钻石用户', '蓝钻用户', '红钻用户']
+                    data: [@foreach ($UserPoints as $v)"{{ $v->name }}",@endforeach]
                 },
                 toolbox: {
                     show: true,
@@ -307,15 +257,9 @@
                         radius: '55%',
                         center: ['50%', '60%'],
                         data: [
-                            { value: 1200, name: '普通用户' },
-                            { value: 1100, name: '铁牌用户' },
-                            { value: 1300, name: '铜牌用户' },
-                            { value: 1000, name: '银牌用户' },
-                            { value: 980, name: '金牌用户' },
-                            { value: 850, name: '钻石用户' },
-                            { value: 550, name: '蓝钻用户' },
-                            { value: 220, name: '红钻用户' },
-
+                            @foreach ($UserPoints as $v)
+                            { value: {{$v->count}}, name: '{{$v->name}}' },
+                            @endforeach
                         ]
                     }
                 ]
@@ -347,18 +291,18 @@
         });
 
 
-        $('[data-rel="tooltip"]').tooltip({ placement: tooltip_placement });
-        function tooltip_placement(context, source) {
-            var $source = $(source);
-            var $parent = $source.closest('table')
-            var off1 = $parent.offset();
-            var w1 = $parent.width();
+        // $('[data-rel="tooltip"]').tooltip({ placement: tooltip_placement });
+        // function tooltip_placement(context, source) {
+        //     var $source = $(source);
+        //     var $parent = $source.closest('table')
+        //     var off1 = $parent.offset();
+        //     var w1 = $parent.width();
 
-            var off2 = $source.offset();
-            var w2 = $source.width();
+        //     var off2 = $source.offset();
+        //     var w2 = $source.width();
 
-            if (parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2)) return 'right';
-            return 'left';
-        }
+        //     if (parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2)) return 'right';
+        //     return 'left';
+        // }
     });
 </script>

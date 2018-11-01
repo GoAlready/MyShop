@@ -369,8 +369,8 @@ function link_operating(name,title){
 					<a href="#" class="dropdown-toggle"><i class="icon-user"></i><span class="menu-text"> 会员管理 </span><b class="arrow icon-angle-down"></b></a>
                     <ul class="submenu">
 					<li class="home"><a href="javascript:void(0)" name="{{Route('admin_member_list')}}" title="会员列表"  class="iframeurl"><i class="icon-double-angle-right"></i>会员列表</a></li>
-                    <li class="home"><a href="javascript:void(0)" name="member-Grading.html" title="等级管理"  class="iframeurl"><i class="icon-double-angle-right"></i>等级管理</a></li>
-                    <li class="home"><a href="javascript:void(0)" name="integration.html" title="会员记录管理"  class="iframeurl"><i class="icon-double-angle-right"></i>会员记录管理</a></li>
+                    <li class="home"><a href="javascript:void(0)" name="{{Route('admin_member_level')}}" title="等级管理"  class="iframeurl"><i class="icon-double-angle-right"></i>等级管理</a></li>
+					<li class="home"><a href="javascript:void(0)" name="{{Route('admin_member_integral')}}" title="会员记录管理"  class="iframeurl"><i class="icon-double-angle-right"></i>会员记录管理</a></li>
  
                    </ul>
 				</li>

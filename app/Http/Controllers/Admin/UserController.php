@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Validator;
 use Hash;
+use App\Models\UserPoints;
+use DB;
 class UserController extends Controller
 {
     // 返回视图
@@ -16,6 +18,21 @@ class UserController extends Controller
             {
                 $users = User::get();
                 return view("admin.member.member_list",['users'=>$users]);
+            }
+
+            //会员等级管理
+            public function getMemberLevelManagement(Request $req)
+            {
+                $users = User::all();
+                $level = UserPoints::select('name',DB::raw('count(name) as count'))->groupBy('name')->get();
+                return view('admin.member.member-Grading',['users'=>$users,'UserPoints'=>$level]);
+            } 
+
+            // 会员记录管理
+            public function getMemberIntegral(Request $req)
+            {
+                $users = User::all();
+                return view('admin.member.member_integral',['users'=>$users]);
             }
 
     // 数据操作

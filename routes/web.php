@@ -95,9 +95,9 @@
                     // 会员列表
                     Route::get("/member/list","UserController@getMemberList")->name("admin_member_list");
                     // 会员等级管理
-                    // Route::get("/member/level/management","UserController@getMemberLevelManagement")->name("admin_member_list");
+                    Route::get("/member/level/management","UserController@getMemberLevelManagement")->name("admin_member_level");
                     // 会员记录管理
-                    // Route::get("/member/list","UserController@")->name("admin_member_list");
+                    Route::get("/member/integral","UserController@getMemberIntegral")->name("admin_member_integral");
                 }
                 // 数据
                 {   

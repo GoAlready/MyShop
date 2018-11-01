@@ -27,19 +27,12 @@
 <body>
     <div class="margin clearfix">
         <div class="" id="Other_Management">
-            <div class="search_style">
-
-                <ul class="search_content clearfix">
-                    <li><label class="l_f">会员名称</label><input name="" type="text" class="text_add" placeholder="输入会员名称、电话、邮箱"
-                            style=" width:400px"></li>
-                    <li style="width:90px;"><button type="button" class="btn_search"><i class="fa fa-search"></i>查询</button></li>
-                </ul>
-            </div>
+            
             <div class="border clearfix">
                 <span class="l_f">
-                    <a href="javascript:ovid()" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;批量删除</a>
+                    <a href="javascript:;" onclick="member_del_batch(this)" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;批量删除</a>
                 </span>
-                <span class="r_f">共：<b>2345</b>条</span>
+                <span class="r_f">共：<b>{{count($users)}}</b>条</span>
             </div>
             <div class="list_style">
                 <table class="table table-striped table-bordered table-hover" id="sample-table">
@@ -55,46 +48,18 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($users as $item)
                         <tr>
-                            <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-                            <td>4577566</td>
-                            <td>花海iatiant</td>
-                            <td><a href="javascript:ovid()" onclick="integration_history('23')">3434</a></td>
-                            <td><a href="javascript:ovid()" onclick="Browse_history('13')">3434</a></td>
-                            <td><a href="javascript:ovid()" onclick="Order_history('33')">34</a></td>
+                            <td><label><input type="checkbox" class="ace member_del_batch"  value="{{$item->id}}"><span class="lbl"></span></label></td>
+                            <td>{{$item->id}}</td>
+                            <td>{{$item->username}}</td>
+                            <td><a href="javascript:;" onclick="integration_history('23')">{{$item->points['points']}}</a></td>
+                            <td><a href="javascript:;" onclick="Browse_history('13')">3434</a></td>
+                            <td><a href="javascript:;" onclick="Order_history('33')">34</a></td>
                             <td> <a title="删除" href="javascript:;" onclick="member_del(this,'1')" class="btn btn-xs btn-warning"><i
                                         class="fa fa-trash  bigger-120"></i></a></td>
                         </tr>
-                        <tr>
-                            <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-                            <td>4543232</td>
-                            <td>花海iatiant</td>
-                            <td><a href="javascript:ovid()" onclick="integration_history('43')">45</a></td>
-                            <td><a href="javascript:ovid()" onclick="Browse_history('53')">11</a></td>
-                            <td><a href="javascript:ovid()" onclick="Order_history('23')">45</a></td>
-                            <td> <a title="删除" href="javascript:;" onclick="member_del(this,'2')" class="btn btn-xs btn-warning"><i
-                                        class="fa fa-trash  bigger-120"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-                            <td>4543232</td>
-                            <td>梅毒</td>
-                            <td><a href="javascript:ovid()" onclick="integration_history('5')">45</a></td>
-                            <td><a href="javascript:ovid()" onclick="Browse_history('4')">11</a></td>
-                            <td><a href="javascript:ovid()" onclick="Order_history('5')">45</a></td>
-                            <td> <a title="删除" href="javascript:;" onclick="member_del(this,'3')" class="btn btn-xs btn-warning"><i
-                                        class="fa fa-trash  bigger-120"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-                            <td>4543232</td>
-                            <td>张小泉</td>
-                            <td><a href="javascript:ovid()" onclick="integration_history('5')">245</a></td>
-                            <td><a href="javascript:ovid()" onclick="Browse_history('4')">131</a></td>
-                            <td><a href="javascript:ovid()" onclick="Order_history('7')">45</a></td>
-                            <td> <a title="删除" href="javascript:;" onclick="member_del(this,'5')" class="btn btn-xs btn-warning"><i
-                                        class="fa fa-trash  bigger-120"></i></a></td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -361,16 +326,39 @@
 
         });
     });
+  /*用户-删除*/
+  function member_del(obj, id) {
+    layer.confirm('确认要删除吗？', function (index) {
+      $.get("/admin/member/delete",{id:[id]},((res)=>{
+        if(!res.error){
+          $(obj).parents("tr").remove();
+          layer.msg('已删除!', { icon: 1, time: 1000 });
+        }else{
+          layer.msg(res.error, { icon: 2, time: 1000 });
+        }
+      }))
+    })
+  }
+  // 批量删除
+  function member_del_batch(obj){
+    layer.confirm('确认要删除吗？', function (index) {
+      let id = [];
+      for (let i = 0; i < $(".member_del_batch:checked").length; i++) {
+        id[i] = $(".member_del_batch:checked")[i].value
+      }
+      $.get("/admin/member/delete",{id:id},((res)=>{
+        if(!res.error){
+          $(".member_del_batch:checked").parents("tr").remove();
+          layer.msg('已删除!', { icon: 1, time: 1000 });
+        }else{
+          layer.msg(res.error, { icon: 2, time: 1000 });
+        }
+      }))
+    })
+  }
 
 
 
-    /*用户-删除*/
-    function member_del(obj, id) {
-        layer.confirm('确认要删除吗？', function (index) {
-            $(obj).parents("tr").remove();
-            layer.msg('已删除!', { icon: 1, time: 1000 });
-        });
-    }
     //积分浏览
     function integration_history(id) {
         layer.open({
