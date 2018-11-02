@@ -36,8 +36,6 @@ class Login
             }
 
         }
-        
-
         return $next($request);
     }
 }

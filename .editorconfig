@@ -12,5 +12,8 @@ trim_trailing_whitespace = true
 trim_trailing_whitespace = false
 
 [*.yml]
+<<<<<<< HEAD
 indent_style = space
+=======
+>>>>>>> a739f00fe82b958e0f73b781699cd0ea63023a4d
 indent_size = 2
