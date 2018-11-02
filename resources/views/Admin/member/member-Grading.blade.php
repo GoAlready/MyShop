@@ -88,9 +88,9 @@
                                 <td>{{$item->gender==0?"保密":($item->gender==1?"男":($item->gender==2?"女":""))}}</td>
                                 <td>{{$item->mobile}}</td>
                                 <td>{{$item->email?:"未设置"}}</td>
-                                <td class="text-l">北京市 海淀区</td>
-                                <td>{{$item->created_at}}</td>
+                                <td class="text-l">{{$item->created_at}}</td>
                                 <td>{{$item->points['name']}}</td>
+                                <td>{{$item->points['points']}}</td>
                                 <td class="td-status"><span class="label {{$item->status?'label-success':'label-default'}} radius">{{$item->status?"已激活":'已停用'}}</span></td>
                                 <td class="td-manage">
                                 <a onClick='{{$item->status?"member_stop(this,$item->id)":"member_start(this,$item->id)"}}' href="javascript:;" title="{{$item->status?'停用':'激活'}}" class="btn btn-xs {{$item->status?'btn-default':'btn-success'}}"><i class="{{$item->status?'icon-ban-circle':'icon-key'}} bigger-120"></i></a>
