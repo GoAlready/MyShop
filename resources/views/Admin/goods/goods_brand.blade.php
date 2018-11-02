@@ -64,7 +64,7 @@
                             <tr>
                                 <td width="25px"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
                                 <td width="80px">{{$v['id']}}</td>
-                                <td><img src="{{ Storage::url( $v['brand_logo'] )}}" width="130" /></td>
+                                <td><img src="{{$v['brand_logo']}}" width="130" /></td>
                                 <td><a href="javascript:ovid()" name="Brand_detailed.html" style="cursor:pointer" class="text-primary brond_name"
                                         onclick="generateOrders('561');" title="{{$v['brand_name']}}">{{$v['brand_name']}}</a></td>
                                 <td>{{$v['created_at']}}</td>
@@ -72,9 +72,9 @@
                                 <td class="td-manage">
                                     <a onClick="member_stop(this,'10001')" href="javascript:;" title="停用" class="btn btn-xs btn-success"><i
                                             class="icon-ok bigger-120"></i></a>
-                                    <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"
+                                    <a title="编辑" href="{{route('admin_goods_brandedit',['id'=>$v['id']])}}"
                                         class="btn btn-xs btn-info"><i class="icon-edit bigger-120"></i></a>
-                                    <a title="删除" href="javascript:;" onclick="member_del(this,'1')" class="btn btn-xs btn-warning"><i
+                                    <a title="删除" href="javascript:;" onclick="member_del(this,{{$v['id']}})" class="btn btn-xs btn-warning"><i
                                             class="icon-trash  bigger-120"></i></a>
                                 </td>
                             </tr>
@@ -199,6 +199,7 @@
     function member_del(obj, id) {
         layer.confirm('确认要删除吗？', function (index) {
             $(obj).parents("tr").remove();
+            $.ajax("/admin/goods_branddelete?id="+id);
             layer.msg('已删除!', { icon: 1, time: 1000 });
         });
     }

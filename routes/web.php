@@ -135,6 +135,10 @@
                     Route::post('/goods_brandupdate',"Goods_brandController@update")->name("admin_goods_brandupdate");
                     Route::get('/goods_branddelete',"Goods_brandController@delete")->name("admin_goods_branddelete");
                 }
+                // 商品
+                {
+                    
+                }
             }
             
         });    

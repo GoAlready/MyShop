@@ -47,7 +47,6 @@ class Goods_brandController extends Controller
             // 移动图片到当前日期目录下
             $image = $req->file('brand_logo')->store("/public/".$date);
             $image =  url('/').Storage::url($image);
-            dd($image);
             $brand->brand_logo = $image;
         }
         // 保存到数据库
@@ -59,17 +58,46 @@ class Goods_brandController extends Controller
 
     public function edit()
     {
+        $id = $_GET['id'];
+        $brand = Goods_brand::find($id)->toArray();
+
+        return view("admin.goods.brand_edit",[
+            'brand' => $brand,
+        ]);
+    }
+
+    public function update(Request $req)
+    {
+        $id = $_GET['id'];
+        $brand = Goods_brand::find($id);
+        $brand->brand_name = $req->brand_name;
+        $oldimg = "public/".str_replace(url('/')."/storage","",$brand->brand_logo);
+
+        if($req->hasFile('brand_logo') && $req->brand_logo->isValid())
+        {
+            Storage::delete($oldimg);
+            // 获取当前日期
+            $date = date("Ymd");
+            // 移动图片到当前日期目录下
+            $image = $req->file('brand_logo')->store("/public/".$date);
+            $image =  url('/').Storage::url($image);
+            $brand->brand_logo = $image;
+        }
+        $brand->save();
+
+        return redirect()->route('admin_goods_brandlist');
 
     }
 
-    public function update()
+    public function delete(Request $req)
     {
+        $id = $req->id;
+        $brand = Goods_brand::find($id);
+        $oldimg = "public/".str_replace(url('/')."/storage","",$brand->brand_logo);
+        Storage::delete($oldimg);
+        Goods_brand::destroy($id);
 
-    }
-
-    public function delete()
-    {
-
+        // return redirect()->route('admin_goods_brandlist');
     }
 
 }

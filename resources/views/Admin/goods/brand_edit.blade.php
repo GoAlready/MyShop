@@ -25,42 +25,22 @@
 <body>
 <div class="margin clearfix">
     <div class="article_style">
-    <form action="{{route('admin_artupdate',['id'=>$message['id']])}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('admin_goods_brandupdate',['id' => $brand['id']])}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="add_content" id="form-article-add">
             <ul>
                 <li class="clearfix Mandatory">
-                    <label class="label_name"><i>*</i>文章标题</label>
-                    <span class="formControls col-10"><input name="title" type="text" id="form-field-1" class="col-xs-10 col-sm-5 " value="{{$message['title']}}"></span>
+                    <label class="label_name"><i>*</i>品牌名称</label>
+                    <span class="formControls col-10"><input name="brand_name" type="text" id="form-field-1" value="{{$brand['brand_name']}}" class="col-xs-10 col-sm-5"></span>
                 </li>
                 <li class="clearfix Mandatory">
-                    <label class="label_name"><i>*</i>文章简介</label>
-                    <span class="formControls col-10"><input name="descript" type="text" id="form-field-1" class="col-xs-10 col-sm-6" value="{{$message['descript']}}"></span>
-                </li>
-            
-                <li class="clearfix"><label class="label_name"><i>*</i>所属分类</label>
-                    <span class="formControls col-4">
-                        <select name="cateid" class="form-control" id="form-field-select-1">
-                            <?php foreach($cates as $v):?>
-                                @if($message['id'] == $v['id'])
-                                {
-                                    <option selected="selected" value="{{$v['id']}}">{{$v['catename']}}</option>
-                                }
-                                @else
-                                {
-                                    <option value="{{$v['id']}}">{{$v['catename']}}</option>
-                                }
-                                @endif
-                            <?php endforeach; ?>
-                        </select>
-                    </span>
-                </li>
-                <li class="clearfix"><label class="label_name">文章内容</label>
-                    <span class="formControls col-10"><script id="editor" name="content" type="text/plain" style="width:100%;height:400px; margin-left:10px;">{!!$message['content']!!}</script> </span>
+                    <label class="label_name"><i>*</i>品牌LOGO</label>
+                    <span class="formControls col-10"><input name="brand_logo" type="file" id="form-field-1" class="col-xs-10 col-sm-6"></span>
                 </li>
             </ul>
+            <br>
             <div class="Button_operation">
-                <button onclick="article_save_submit();" class="btn btn-primary radius" type="submit">保存并提交</button>
+                <button style="margin-left:-300px;" class="btn btn-primary radius" type="submit">保存并提交</button>
             </div>
         </div>
     </form>
@@ -74,7 +54,7 @@
 <script type="text/javascript" src="/Widget/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script> 
 <script type="text/javascript">
 /**提交操作**/
-function article_save_submit(){
+// function article_save_submit(){
 	     var num=0;
 		 var str="";
     $(".Mandatory input[type$='text']").each(function(n){
