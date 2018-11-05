@@ -34,14 +34,15 @@ class LoginController extends Controller
                     'adminid' => $admin->id,
                     'adminname' => $admin->adminname,
                 ]);
-                $count = DB::select("select count(*) from admin_role where role_id = 1 and admin_id = {$admin->id}");   
-                if($count > 0)
+                $count = DB::select("select count(*) as count from admin_role where role_id = 1 and admin_id = {$admin->id}"); 
+
+                if($count[0]->count > 0)
                 {
                     session(['root' => true]);
                 }
                 else
                 {
-                    session(['url_path' => Admin::getUrl($admin->id)]);
+                    session(['url_path' => $admin->getUrl($admin->id)]);
                 }
                 return redirect()->route('admin_index');        
             }

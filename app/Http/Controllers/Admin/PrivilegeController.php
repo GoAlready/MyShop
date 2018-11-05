@@ -48,6 +48,7 @@ class PrivilegeController extends Controller
     {
         $id = $_GET['id'];
         $privilege = Privilege::with('level')->where('parent_id',0)->get()->toArray();
+        // dd($privilege);
         $message = Privilege::find($id)->toArray();
 
         return view("admin.privilege.pri_edit",[

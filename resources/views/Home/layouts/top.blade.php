@@ -23,9 +23,9 @@
 			<ul class="fl">
 				<li class="f-item">品优购欢迎您！</li>
 				@if(session('id'))
-					<li class="f-item">请<a href="#">{{session('username')}}</a><span><a href="{{route('home_logout')}}">退出</a></span></li>
+					<li class="f-item"><a href="#">{{session('username')}}</a>&nbsp;&nbsp;&nbsp;<span><a href="{{route('home_logout')}}">退出</a></span></li>
 				@else
-					<li class="f-item">请<a href="{{route('home_login')}}">登录</a><span><a href="{{route('home_logout')}}">免费注册</a></span></li>
+					<li class="f-item"><a href="{{route('home_login')}}">登录</a>&nbsp;&nbsp;&nbsp;<span><a href="{{route('home_logout')}}">免费注册</a></span></li>
 				@endif
 				</ul>
 			<ul class="fr">

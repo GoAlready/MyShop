@@ -22,7 +22,8 @@
         Route::middleware(['home_login'])->group(function(){
             // 退出登录
             Route::get('/logout','LoginController@logout')->name('home_logout');
-
+            // 商品详情页‘
+            Route::get('/goods','GoodsController@index')->name('home_index');
         }); 
     });
 
@@ -45,7 +46,7 @@
                 Route::get('/artlist','ArticleController@list')->name('admin_artlist');
                 Route::get('/artcreate','ArticleController@create')->name('admin_artcreate');
                 Route::post('/artadd','ArticleController@add')->name('admin_artadd');
-                Route::get('/artedit/{id}','ArticleController@edit')->name('admin_artedit');
+                Route::get('/artedit','ArticleController@edit')->name('admin_artedit');
                 Route::get('/artupdate','ArticleController@update')->name('admin_artupdate');
                 Route::get('/artdelete','ArticleController@delete')->name('admin_artdelete');
             }
@@ -54,8 +55,8 @@
             {
                 Route::get('/artsort','Article_cateController@sort')->name('admin_artsort');
                 Route::post('/artsort_add','Article_cateController@add')->name('admin_artsort_add');
-                Route::get('/artsort_edit/{id}','Article_cateController@edit')->name('admin_artsort_edit');
-                Route::post('/artsort_update/{id}','Article_cateController@update')->name('admin_artsort_update');
+                Route::get('/artsort_edit','Article_cateController@edit')->name('admin_artsort_edit');
+                Route::post('/artsort_update','Article_cateController@update')->name('admin_artsort_update');
                 Route::get('/artsort_delete','Article_cateController@delete')->name('admin_artsort_delete');
             }
 
@@ -63,8 +64,8 @@
             {   
                 Route::get('/admin_list','AdminController@list')->name('admin_adminlist');
                 Route::post('/admin_add','AdminController@add')->name('admin_adminadd');
-                Route::get('/admin_edit/{id}','AdminController@edit')->name('admin_adminedit');
-                Route::post('/admin_update/{id}','AdminController@update')->name('admin_adminupdate');
+                Route::get('/admin_edit','AdminController@edit')->name('admin_adminedit');
+                Route::post('/admin_update','AdminController@update')->name('admin_adminupdate');
                 Route::get('/admin_delete','AdminController@delete')->name('admin_admindelete');
             }
 
@@ -137,7 +138,14 @@
                 }
                 // 商品
                 {
-                    
+                    Route::get('/goods',"GoodsController@list")->name("admin_goodslist");
+                    Route::get('/goodscreate',"GoodsController@create")->name("admin_goodscreate");
+                    Route::get('/goods_ajax',"GoodsController@ajax_getcate");
+                    Route::get('/goods_ajaxbrand',"GoodsController@ajax_getbrand");
+                    Route::post('/goodsadd',"GoodsController@add")->name("admin_goodsadd");
+                    Route::get('/goodsedit',"GoodsController@edit")->name("admin_goodsedit");
+                    Route::post('/goodsupdate',"GoodsController@update")->name("admin_goodsupdate");
+                    Route::get('/goodsdelete',"GoodsController@delete")->name("admin_goodsdelete");
                 }
             }
             

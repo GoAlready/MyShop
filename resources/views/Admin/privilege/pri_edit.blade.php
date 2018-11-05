@@ -44,13 +44,8 @@
                             <option value="0">--根级分类--</option>
                             @foreach($pri as $v)
                                 @foreach($v['level'] as $k)
-                                    @if($message['parent_id'] == $k['id'])
-                                        <option selected="selected" value="{{$k['id']}}">--{{$k['pri_name']}}--</option>   
-                                    @elseif($message['parent_id'] == $v['id'])
-                                        <option selected="selected" value="{{$v['id']}}">--{{$v['pri_name']}}--</option>
-                                    @else
-                                        <option value="0">--根级分类--</option>
-                                    @endif
+                                    <option {{ $message['parent_id'] == $v['id'] ? "selected='selected'" : '' }} value="{{$v['id']}}">--{{$v['pri_name']}}--</option>        
+                                    <option {{($message['parent_id'] == $k['id'])  ? "selected='selected'" : '' }} value="{{$k['id']}}">--{{$k['pri_name']}}--</option>   
                                 @endforeach
                             @endforeach
                         </select>

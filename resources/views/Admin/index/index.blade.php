@@ -376,7 +376,7 @@ function link_operating(name,title){
 				</li>
 				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 商品管理 </span><b class="arrow icon-angle-down"></b></a>
 					    <ul class="submenu">
-                        	<li class="home"><a  href="javascript:void(0)" name="Products_List.html"  title="产品类表" class="iframeurl"><i class="icon-double-angle-right"></i>产品类表</a></li>
+                        	<li class="home"><a  href="javascript:void(0)" name="{{route('admin_goodslist')}}"  title="商品列表" class="iframeurl"><i class="icon-double-angle-right"></i>商品列表</a></li>
 							<li class="home"><a  href="javascript:void(0)" name="{{route('admin_goods_brandlist')}}" title="品牌管理"  class="iframeurl"><i class="icon-double-angle-right"></i>品牌管理</a></li>
 							<li class="home"><a href="javascript:void(0)" name="{{route('admin_goods_typelist')}}" title="分类管理"  class="iframeurl"><i class="icon-double-angle-right"></i>分类管理</a></li>
 						</ul>

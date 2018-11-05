@@ -21,4 +21,11 @@ class Goods_type extends Model
     {
         return $this->hasMany('App\Models\Goods_type','pid','id')->with('level2');
     }
+
+    public function  getcate($pid = 0)
+    {
+        $type = $this->where('pid',$pid)->get()->toArray();
+
+        return $type;
+    }
 }

@@ -43,7 +43,6 @@ class Article_cateController extends Controller
     // 编辑分类
     public function edit($id)
     {
-        // $id = $_GET['id'];
         $message = Article_cate::where('id',$id)->first();
 
         return view("admin.article.article_sort_edit",[

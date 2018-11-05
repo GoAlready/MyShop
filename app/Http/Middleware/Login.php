@@ -15,6 +15,7 @@ class Login
      */
     public function handle($request, Closure $next)
     {
+        // dd(session('root'));
         if(!session('adminid'))
         {
             return redirect()->route("admin_login");

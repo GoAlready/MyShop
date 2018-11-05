@@ -51,8 +51,9 @@ class AdminController extends Controller
         return redirect()->route('admin_adminlist');
     }
 
-    public function edit($id)
+    public function edit()
     {
+        $id = $_GET['id'];
         $role = Role::get();
         $admin = Admin::find($id);
         $roles = $admin->role()->get(['role_id']);
@@ -68,9 +69,10 @@ class AdminController extends Controller
         ]);
     }
 
-    public function update(Request $req,$id)
+    public function update(Request $req)
     {
-
+        
+        $id = $_GET['id'];
         $message = Admin::find($id);
         // 删除中间表和管理员有关的id
         $message->role()->detach();
