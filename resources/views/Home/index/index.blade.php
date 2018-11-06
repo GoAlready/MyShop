@@ -76,22 +76,22 @@
 			<div class="yui3-g SortList ">
 				<div class="yui3-u Left all-sort-list">
 					<div class="all-sort-list2">
-					@foreach($type as $v)
+						@foreach($type as $v)
 						<div class="item bo">
 							<h3><a href="">{{$v['name']}}</a></h3>
-
-							<div class="item-list clearfix">
-							@foreach($v['level'] as $k)
+							<div class="item-list clearfix">							
 								<div class="subitem">
-
+								@foreach($v['level'] as $k)
 									<dl class="fore1">
 										<dt><a href="">{{$k['name']}}</a></dt>
+										<dd>
 										@foreach($k['level2'] as $d)
-										<dd><em><a href="">{{$d['name']}}</a></em></dd>
+										<em><a href="">{{$d['name']}}</a></em>
 										@endforeach
+										</dd>
 									</dl>
+								@endforeach								
 								</div>
-							@endforeach
 							</div>
 						</div>
 						@endforeach

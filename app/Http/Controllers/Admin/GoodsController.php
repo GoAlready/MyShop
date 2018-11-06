@@ -36,10 +36,22 @@ class GoodsController extends Controller
     }
 
     public function add(Request $req)
-    {
-        $good = Goods::create($req->all());
+    {   
+        if($req->hasFile('cover') && $req->cover->isValid())
+        {
+            // 获取当前日期
+            $date = date("Ymd");
+            // 移动图片到当前日期目录下
+            $image = $req->file('cover')->store("/public/".$date);
+        }
+        $good = new Goods;
+        $good = $good->fill($req->all());
+        // 将图片填充到模型
+        $good->cover = $image;
+        $good->save();
         // 获取到商品的id
         $good_id = $good['id'];
+
         // 获取到sku,拼接到一起
         $arr = $req->attr;
         for($i = 0;$i<count($arr);$i++){
@@ -56,7 +68,11 @@ class GoodsController extends Controller
             $attr = $sku[$i];
             Goods_sku::insert(['goods_id'=>$good_id,'sku_attr'=>$attr,'sku_price'=>$price,'sku_num'=>$num]); 
         }
-        return redirect()->route('admin_goodslist');  
+
+        $upload = new Goods_image;
+        $upload->upload($req,$good_id);
+        
+        return redirect()->route('admin_goodslist');
     }
     public function ajax_getcate()
     {

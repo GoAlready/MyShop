@@ -52,6 +52,7 @@
                             <tr>
                                 <th width="25px"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
                                 <th width="80px">产品编号</th>
+                                <th width="80px">产品图片</th>
                                 <th width="250px">产品名称</th>
                                 <th width="180px">加入时间</th>
                                 <th width="70px">状态</th>
@@ -63,6 +64,7 @@
                             <tr>
                                 <td width="25px"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
                                 <td width="80px">{{$v['id']}}</td>
+                                <td width="80px"><img src="{{Storage::url($v['cover'])}}" width="65px"></td>
                                 <td width="250px"><u style="cursor:pointer" class="text-primary" onclick="">{{$v['goods_name']}}</u></td>
                                 <td width="180px">{{$v['created_at']}}</td>
                                 <td class="td-status"><span class="label label-success radius">已启用</span></td>

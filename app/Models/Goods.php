@@ -10,6 +10,6 @@ class Goods extends Model
 
     protected $table = 'goods';
     // 设置白名单
-    protected $fillable = ['goods_name','description','type1_id','type2_id','type3_id','brand_id'];
+    protected $fillable = ['goods_name','description','cover','type1_id','type2_id','type3_id','brand_id'];
 
 }
