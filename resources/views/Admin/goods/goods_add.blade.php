@@ -194,42 +194,42 @@
                                                     <li class="li_width1">
                                                     <div class="layui-form-item">
                                                         <label>
-                                                            <input id="Checkbox3" type="checkbox" class="chcBox_Width" value="白色" />白色
+                                                            <input id="Checkbox3" type="checkbox" class="chcBox_Width" value="颜色-白色" />白色
                                                             <span class="li_empty"> </span>
                                                         </label>
                                                     </li>
                                                     <li class="li_width">
                                                         <label>
-                                                            <input id="Checkbox1" type="checkbox" class="chcBox_Width" value="红色" />红色
+                                                            <input id="Checkbox1" type="checkbox" class="chcBox_Width" value="颜色-红色" />红色
                                                             <span class="li_empty"> </span>
                                                         </label>
                                                     </li>
                                                     <li class="li_width">
                                                         <label>
-                                                            <input id="Checkbox2" type="checkbox" class="chcBox_Width" value="粉色" />粉色
+                                                            <input id="Checkbox2" type="checkbox" class="chcBox_Width" value="颜色-粉色" />粉色
                                                         </label>
                                                     </li>
                                                     <li class="li_width">
                                                         <label>
-                                                            <input id="Checkbox4" type="checkbox" class="chcBox_Width" value="绿色" />绿色
+                                                            <input id="Checkbox4" type="checkbox" class="chcBox_Width" value="颜色-绿色" />绿色
                                                             <span class="li_empty"> </span>
                                                         </label>
                                                     </li>
                                                     <li class="li_width">
                                                         <label>
-                                                            <input id="Checkbox5" type="checkbox" class="chcBox_Width" value="黄色" />黄色
+                                                            <input id="Checkbox5" type="checkbox" class="chcBox_Width" value="颜色-黄色" />黄色
                                                             <span class="li_empty"> </span>
                                                         </label>
                                                     </li>
                                                     <li class="li_width">
                                                         <label>
-                                                            <input id="Checkbox6" type="checkbox" class="chcBox_Width" value="黑色" />黑色
+                                                            <input id="Checkbox6" type="checkbox" class="chcBox_Width" value="颜色-黑色" />黑色
                                                             <span class="li_empty"> </span>
                                                         </label>
                                                     </li>
                                                     <li class="li_width">
                                                         <label>
-                                                            <input id="Checkbox7" type="checkbox" class="chcBox_Width" value="紫色" />紫色
+                                                            <input id="Checkbox7" type="checkbox" class="chcBox_Width" value="颜色-紫色" />紫色
                                                             <span class="li_empty"> </span>
                                                         </label>
                                                     </li>
@@ -245,47 +245,47 @@
 
                                                     <li class="li_width">
                                                         <label>
-                                                            <input id="Checkbox8" type="checkbox" class="chcBox_Width" value="145/80A" />145/80A
+                                                            <input id="Checkbox8" type="checkbox" class="chcBox_Width" value="尺寸-145/80A" />145/80A
                                                         </label>
                                                     </li>
                                                     <li class="li_width">
                                                         <label>
-                                                            <input id="Checkbox9" type="checkbox" class="chcBox_Width" value="145/80A" />150/80A
+                                                            <input id="Checkbox9" type="checkbox" class="chcBox_Width" value="尺寸-145/80A" />150/80A
                                                         </label>
                                                     </li>
                                                     <li class="li_width">
                                                         <label>
-                                                            <input id="Checkbox10" type="checkbox" class="chcBox_Width" value="155/80A" />155/80A
+                                                            <input id="Checkbox10" type="checkbox" class="chcBox_Width" value="尺寸-155/80A" />155/80A
                                                             <span class="li_empty"> </span>
                                                         </label>
                                                     </li>
                                                     <li class="li_width">
                                                         <label>
-                                                            <input id="Checkbox10" type="checkbox" class="chcBox_Width" value="160/84A" />160/84A
+                                                            <input id="Checkbox10" type="checkbox" class="chcBox_Width" value="尺寸-160/84A" />160/84A
                                                             <span class="li_empty"> </span>
                                                         </label>
                                                     </li>
                                                     <li class="li_width">
                                                         <label>
-                                                            <input id="Checkbox10" type="checkbox" class="chcBox_Width" value="165/88A" />165/88A
+                                                            <input id="Checkbox10" type="checkbox" class="chcBox_Width" value="尺寸-165/88A" />165/88A
                                                             <span class="li_empty"> </span>
                                                         </label>
                                                     </li>
                                                     <li class="li_width">
                                                         <label>
-                                                            <input id="Checkbox10" type="checkbox" class="chcBox_Width" value="170/92A" />170/92A
+                                                            <input id="Checkbox10" type="checkbox" class="chcBox_Width" value="尺寸-170/92A" />170/92A
                                                             <span class="li_empty"> </span>
                                                         </label>
                                                     </li>
                                                     <li class="li_width">
                                                         <label>
-                                                            <input id="Checkbox10" type="checkbox" class="chcBox_Width" value="175/96A" />175/96A
+                                                            <input id="Checkbox10" type="checkbox" class="chcBox_Width" value="尺寸-175/96A" />175/96A
                                                             <span class="li_empty"> </span>
                                                         </label>
                                                     </li>
                                                     <li class="li_width">
                                                         <label>
-                                                            <input id="Checkbox10" type="checkbox" class="chcBox_Width" value="175/100A" />175/100A
+                                                            <input id="Checkbox10" type="checkbox" class="chcBox_Width" value="尺寸-175/100A" />175/100A
                                                             <span class="li_empty"> </span>
                                                         </label>
                                                     </li>

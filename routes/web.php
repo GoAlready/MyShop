@@ -23,7 +23,9 @@
             // 退出登录
             Route::get('/logout','LoginController@logout')->name('home_logout');
             // 商品详情页‘
-            Route::get('/goods','GoodsController@index')->name('home_index');
+            Route::get('/goods','GoodsController@good')->name('home_good');
+            // 商品搜索页
+            Route::get('/goodsearch',"GoodsController@search")->name("admin_goodsearch");
         }); 
     });
 
@@ -140,12 +142,11 @@
                 {
                     Route::get('/goods',"GoodsController@list")->name("admin_goodslist");
                     Route::get('/goodscreate',"GoodsController@create")->name("admin_goodscreate");
-                    Route::get('/goods_ajax',"GoodsController@ajax_getcate");
-                    Route::get('/goods_ajaxbrand',"GoodsController@ajax_getbrand");
                     Route::post('/goodsadd',"GoodsController@add")->name("admin_goodsadd");
-                    Route::get('/goodsedit',"GoodsController@edit")->name("admin_goodsedit");
-                    Route::post('/goodsupdate',"GoodsController@update")->name("admin_goodsupdate");
-                    Route::get('/goodsdelete',"GoodsController@delete")->name("admin_goodsdelete");
+                    // ajax获取商品分类
+                    Route::get('/goods_ajax',"GoodsController@ajax_getcate");
+                    // ajax获取品牌分类
+                    Route::get('/goods_ajaxbrand',"GoodsController@ajax_getbrand");                    
                 }
             }
             

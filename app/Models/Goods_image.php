@@ -35,15 +35,8 @@ class Goods_image extends Model
                 // 创建图片对象
                 $img = Image::make($path);
 
-                // 生成小缩略图
-                $img->resize(400,null,function($c)
-                {
-                    $c->aspectRatio();
-                });
-                $img->save(storage_path('app/'.$image));
-
                 // 生成中缩略图
-                $img->resize(800,null,function($c)
+                $img->resize(400,null,function($c)
                 {
                     $c->aspectRatio();
                 });
@@ -52,7 +45,7 @@ class Goods_image extends Model
                 $img->save(storage_path('app/'.$mdimage));
 
                 // 生成大缩略图
-                $img->resize(1200,null,function($c)
+                $img->resize(800,null,function($c)
                 {
                     $c->aspectRatio();
                 });

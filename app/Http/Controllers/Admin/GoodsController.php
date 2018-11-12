@@ -10,6 +10,8 @@ use App\Models\Goods_type;
 use App\Models\Goods_brand;
 use App\Models\Goods_image;
 use App\Models\Goods_sku;
+use App\Models\Goods_attr;
+
 
 
 
@@ -18,8 +20,8 @@ class GoodsController extends Controller
 {
     public function list()
     {
-        $good = Goods::get()->toArray();
-        // dd($good);
+        $good = Goods::paginate(6);
+        // return $good;
         return view("admin.goods.goods_list",[
             'good' => $good,
         ]);
@@ -51,6 +53,8 @@ class GoodsController extends Controller
         $good->save();
         // 获取到商品的id
         $good_id = $good['id'];
+
+        Goods_attr::addAttr($req,$good_id);
 
         // 获取到sku,拼接到一起
         $arr = $req->attr;

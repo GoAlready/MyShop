@@ -81,8 +81,12 @@
                         </tbody>
                     </table>
                 </div>
+              
             </div>
         </div>
+    </div>
+    <div style="position:absolute; bottom:-150px; right:250px">
+    {{ $good->links() }} 
     </div>
 </body>
 

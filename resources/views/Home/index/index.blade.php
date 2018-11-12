@@ -86,7 +86,7 @@
 										<dt><a href="">{{$k['name']}}</a></dt>
 										<dd>
 										@foreach($k['level2'] as $d)
-										<em><a href="">{{$d['name']}}</a></em>
+										<em><a href="{{route('admin_goodsearch',['id'=>$d['id']])}}">{{$d['name']}}</a></em>
 										@endforeach
 										</dd>
 									</dl>
